@@ -1,0 +1,24 @@
+.error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__wrap {
+    padding: 0.3em 1em;
+    display: flex;
+    align-items: center;
+    background: #000;
+    font-size: 1.25rem;
+    .error__mes {
+      color: red;
+    }
+    .error__btn {
+      background: inherit;
+      margin-left: 2em;
+      padding: 0 1em;
+      border: 2px solid #fff;
+      color: #fff;
+    }
+  }
+}
