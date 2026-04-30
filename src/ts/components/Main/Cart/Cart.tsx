@@ -95,7 +95,7 @@ export function Cart(): JSX.Element {
                           (el: ICartItem, idx: number) =>
                             <tr key={nanoid()}>
                               <td>{idx + 1}</td>
-                              <td><Link to={`${Paths.CATALOG}${el.id}`}>{el.title}</Link></td>
+                              <td><Link to={`${Paths.CATALOG}/${el.id}`}>{el.title}</Link></td>
                               <td>{el.size}</td>
                               <td>{el.quantity}</td>
                               <td>{el.price} руб.</td>

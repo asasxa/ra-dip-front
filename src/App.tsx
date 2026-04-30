@@ -17,7 +17,7 @@ function App() {
         <Route path={Paths.ABOUT} element={<About />} />
         <Route path={Paths.CONTACTS} element={<ContactsInfo />} />
         <Route path={Paths.CATALOG} element={<CatalogSearch />} />
-        <Route path={`${Paths.CATALOG}:id`} element={<CatalogItem />} />
+        <Route path={`${Paths.CATALOG}/:id`} element={<CatalogItem />} />
         <Route path={Paths.CART} element={<Cart />} />
         <Route path='*' element={<Error404 />} />
       </Route>
