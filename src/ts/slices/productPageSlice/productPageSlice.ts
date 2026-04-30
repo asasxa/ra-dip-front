@@ -6,7 +6,7 @@ import { TRootState } from '../../store';
 const initialState: IProductPageState = {
   item: null,
   quantity: 1,
-  avalible: false,
+  available: false,
   selectedSize: '',
   isLoading: false,
   error: null,
@@ -38,7 +38,7 @@ const productPageSlice = createSlice({
       })
       .addCase(fetchProduct.fulfilled, (state, action: PayloadAction<IProduct>) => {
         state.item = action.payload;
-        state.avalible = action.payload.sizes.some((el) => el.avalible);
+        state.available = action.payload.sizes.some((el) => el.available);
         state.isLoading = false;
         state.selectedSize = '';
       })
@@ -46,14 +46,14 @@ const productPageSlice = createSlice({
         state.error = action.error;
         state.item = null;
         state.isLoading = false;
-        state.avalible = false;
+        state.available = false;
       });
   }
 });
 
 export const selectProduct = (state: TRootState) => state.product.item;
 export const selectQuantity = (state: TRootState) => state.product.quantity;
-export const selectAvalible = (state: TRootState) => state.product.avalible;
+export const selectAvailable = (state: TRootState) => state.product.available;
 export const selectSelectedSize = (state: TRootState) => state.product.selectedSize;
 export const selectProductLoading = (state: TRootState) => state.product.isLoading;
 export const selectProductError = (state: TRootState) => state.product.error;

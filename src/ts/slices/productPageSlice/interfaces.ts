@@ -2,7 +2,7 @@ import { SerializedError } from "@reduxjs/toolkit";
 
 export type TSizes = {
   size: string,
-  avalible: boolean,
+  available: boolean,
 }
 
 export interface IProduct {
@@ -25,7 +25,7 @@ export interface IProduct {
 export interface IProductPageState {
   item: IProduct | null;
   quantity: number;
-  avalible: boolean;
+  available: boolean;
   selectedSize: string;
   isLoading: boolean;
   error: SerializedError | null;
