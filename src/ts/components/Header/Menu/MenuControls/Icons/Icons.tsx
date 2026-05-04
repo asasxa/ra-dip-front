@@ -5,6 +5,7 @@ import { Paths } from "../../../../../Paths";
 import { selectCartItems } from "../../../../../slices/cartSlice/cartSlice";
 import { selectCatalogSearch } from "../../../../../slices/catalogSlice/catalogSlice";
 import { selectClickedSearch, setSearchActive, setSearchNotActive } from "../../../../../slices/iconSearchSlice/iconSearchSlice";
+import { safeGetLocalStorage } from '../../../../../utils/storage';
 
 export function Icons(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -12,8 +13,8 @@ export function Icons(): JSX.Element {
   const clickedSearch = useAppSelector(selectClickedSearch);
   const navigate = useNavigate();
   const cartItems = useAppSelector(selectCartItems);
-  const storageData = JSON.parse(localStorage.getItem('cart') as string);
-  const quantity = storageData ? storageData.items.length : cartItems.length;
+
+  const quantity = cartItems.length;
 
   const onSearchClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (clickedSearch && search) {

@@ -2,7 +2,7 @@ import React, { createRef, useEffect, MutableRefObject, ChangeEvent, FormEvent }
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/hooks";
 import { Paths } from "../../../../../Paths";
-import { changeFied, selectCatalogSearch } from "../../../../../slices/catalogSlice/catalogSlice";
+import { changeField, selectCatalogSearch } from "../../../../../slices/catalogSlice/catalogSlice";
 import { selectClickedSearch } from "../../../../../slices/iconSearchSlice/iconSearchSlice";
 
 export function SearchForm(): JSX.Element {
@@ -18,7 +18,7 @@ export function SearchForm(): JSX.Element {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    dispatch(changeFied(value));
+    dispatch(changeField(value));
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

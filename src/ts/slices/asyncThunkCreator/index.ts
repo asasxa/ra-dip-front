@@ -44,10 +44,9 @@ type TFetchProps = {
   q?: string;
 }
 
-let controller: AbortController;
-let signal: AbortSignal;
-
 const createRequestItems = async (options: TFetchProps) => {
+  const controller = new AbortController();
+
   const getRetryFetch = async (retryCount = 3): Promise<ICardItem[]> => {
     if (retryCount) {
       try {
@@ -59,13 +58,10 @@ const createRequestItems = async (options: TFetchProps) => {
           offset: `${offset}`,
           q: `${q}`
         });
-        if (controller) {
-          controller.abort();
-        }
-        controller = new AbortController();
-        signal = controller.signal;
+
         const url = new URL(`${import.meta.env.VITE_API_URL}/api/items?${query}`);
-        const response = await fetch(url, { signal });
+        const response = await fetch(url, { signal: controller.signal });
+
         if (!response.ok) {
           return getRetryFetch(retryCount - 1);
         }
@@ -73,7 +69,6 @@ const createRequestItems = async (options: TFetchProps) => {
       } catch (error) {
         if (error instanceof Error) {
           if (error.name === 'AbortError') {
-            console.warn('Запрос был отменён.');
             return [];
           }
           return getRetryFetch(retryCount - 1);

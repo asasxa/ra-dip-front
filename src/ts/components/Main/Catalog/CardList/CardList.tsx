@@ -20,7 +20,7 @@ export function CardList({ children }: TProps): JSX.Element {
             categoryId: selectCategory.id,
             q: search
           })}
-          clossest='.row'
+          closest='.row'
           text='Ошибка запроса элементов каталога'
           error={catalogItemsError} />
       }

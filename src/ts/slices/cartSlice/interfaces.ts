@@ -29,7 +29,7 @@ export type TTelephoneNum = {
 
 export interface IOrderState {
   telephone: TTelephone;
-  addres: string;
+  address: string;
   loading: boolean;
   error: SerializedError | null;
 }

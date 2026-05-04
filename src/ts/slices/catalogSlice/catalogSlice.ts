@@ -18,7 +18,7 @@ const catalogSlice = createSlice({
   name: 'catalog',
   initialState,
   reducers: {
-    changeFied(state, action: PayloadAction<string>) {
+    changeField(state, action: PayloadAction<string>) {
       state.search = action.payload;
     },
     resetForm(state) {
@@ -68,5 +68,5 @@ export const selectMoreVisible = (state: TRootState) => state.catalogItems.moreV
 export const selectMoreLoading = (state: TRootState) => state.catalogItems.moreLoading;
 export const selectMoreError = (state: TRootState) => state.catalogItems.moreError;
 export const selectCatalogSearch = (state: TRootState) => state.catalogItems.search;
-export const { changeFied, resetForm } = catalogSlice.actions;
+export const { changeField, resetForm } = catalogSlice.actions;
 export const catalogItemsReducer = catalogSlice.reducer;

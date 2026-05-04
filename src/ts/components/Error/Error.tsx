@@ -5,15 +5,15 @@ import { useAppDispatch } from '../../hooks/hooks';
 type TPropsError = {
   error: SerializedError,
   text: string,
-  clossest: string,
+  closest: string,
   callback: Function
 }
 
-export function Error({ error, text, clossest, callback }: TPropsError): JSX.Element {
+export function Error({ error, text, closest, callback }: TPropsError): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleClick = (e: React.MouseEvent) => {
-    if (error && e.currentTarget.closest(clossest)) {
+    if (error && e.currentTarget.closest(closest)) {
       dispatch(callback())
     }
   }

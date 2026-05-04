@@ -20,7 +20,7 @@ export function Categories({ categories }: TProps): JSX.Element {
             error && <Error
               text="Ошибка запроса категорий"
               error={error}
-              clossest='.catalog-categories'
+              closest='.catalog-categories'
               callback={fetchCategories}
             />
           }

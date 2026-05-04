@@ -23,7 +23,7 @@ export function TopSales({topSales, isLoading, error}: ITopSalesState): JSX.Elem
           <Error
             error={error}
             text={'Ошибка запроса хитов продаж'}
-            clossest='.top-sales'
+            closest='.top-sales'
             callback={fetchTopSales}
           />
         </section>

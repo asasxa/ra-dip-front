@@ -13,17 +13,16 @@ import { nanoid } from "nanoid";
 import { ICartItem } from "../../../slices/cartSlice/interfaces";
 import { FormEvent, ChangeEvent } from 'react';
 import { addressSelector, resetOrderForm, telephoneSelector } from "../../../slices/orderSlice/orderSlice";
-import { changeFiels } from '../../../slices/orderSlice/orderSlice';
+import { changeFields } from '../../../slices/orderSlice/orderSlice';
 import { TTelephoneNum } from "../../../slices/orderSlice/interfaces";
 import { fetchOrder } from '../../../slices/asyncThunkCreator';
 import { Preloader } from "../Preloader/Preloader";
+import { safeGetLocalStorage } from '../../../utils/storage';
 
 export function Cart(): JSX.Element {
   const dispatch = useAppDispatch();
-  const storageData = JSON.parse(localStorage.getItem('cart') as string) as { items: ICartItem[] };
-  const stateItems = useAppSelector(selectCartItems);
+  const items = useAppSelector(selectCartItems);
   const orderState = useAppSelector(selectOrederState);
-  const items = storageData ? storageData.items : stateItems;
   const orderLoading = useAppSelector(selectOrderLoading);
   const orderError = useAppSelector(selectOrderError);
   const total = items.reduce((prev, cur) => prev + cur.total, 0);
@@ -52,7 +51,7 @@ export function Cart(): JSX.Element {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch(changeFiels({ name, value }));
+    dispatch(changeFields({ name, value }));
   }
 
   const showSuccess = () => {

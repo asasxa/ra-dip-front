@@ -30,7 +30,7 @@ export function More(): JSX.Element {
         moreError && <Error
           error={moreError}
           text={'Ошибка при попытке загрузить ещё'}
-          clossest='.text-center'
+          closest='.text-center'
           callback={() => fetchMoreItems({
             categoryId: selectedCategory.id,
             offset: items.length,

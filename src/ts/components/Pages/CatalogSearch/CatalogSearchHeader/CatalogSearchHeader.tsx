@@ -1,6 +1,6 @@
 import React, { createRef, MutableRefObject, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { selectCatalogSearch, changeFied } from '../../../../slices/catalogSlice/catalogSlice';
+import { selectCatalogSearch, changeField } from '../../../../slices/catalogSlice/catalogSlice';
 import { selectCategoriesSelected } from '../../../../slices/categorySlice/categorySlice';
 import { fetchCatalogItems } from '../../../../slices/asyncThunkCreator';
 
@@ -24,7 +24,7 @@ export function CatalogSearchHeader(): JSX.Element {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    dispatch(changeFied(value));
+    dispatch(changeField(value));
   }
 
   return (

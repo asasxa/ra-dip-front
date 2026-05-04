@@ -13,5 +13,5 @@ export type TTelephoneNum = {
 
 export interface IOrderState {
   telephone: TTelephone;
-  addres: string;
+  address: string;
 }

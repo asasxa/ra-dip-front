@@ -65,7 +65,7 @@ export function CatalogItem(): JSX.Element {
       <section className="catalog-item">
         <h2 className="text-center">{item?.title}</h2>
         { productLoading && <Preloader /> }
-        { productError && <Error error={productError} text='Ошибка запроса информации о товаре' clossest='.catalog-item' callback={() => fetchProduct(id)} /> }
+        { productError && <Error error={productError} text='Ошибка запроса информации о товаре' closest='.catalog-item' callback={() => fetchProduct(id)} /> }
         <div className="row">
           <div className="col-5">
             <img src={item?.images[0]} className="img-fluid" alt={item?.title} onError={handleImgError} />
@@ -82,10 +82,23 @@ export function CatalogItem(): JSX.Element {
               </tbody>
             </table>
             <div className="text-center">
-              { available
-                ? <p>Размеры в наличии: { item?.sizes.filter((el) => el.available).map((el) => <span key={nanoid()} onClick={() => onSelectSizeClick(el.size)} className={selectedSize === el.size ? 'catalog-item-size selected' : 'catalog-item-size'}>{el.size}</span>) }</p>
-                : <p>Товара нет в наличии</p>
-              }
+              { available ? (
+                  <p>Размеры в наличии: {
+                    item?.sizes
+                      .filter((el) => el.available)
+                      .map((el) => (
+                        <span
+                          key={el.size}
+                          onClick={() => onSelectSizeClick(el.size)}
+                          className={selectedSize === el.size ? 'catalog-item-size selected' : 'catalog-item-size'}
+                        >
+                          {el.size}
+                        </span>
+                      ))
+                  }</p>
+                ) : (
+                  <p>Товара нет в наличии</p>
+                )}
               { available && <p>Количество: <span className="btn-group btn-group-sm pl-2"><button onClick={() => dispatch(decrement())} className="btn btn-secondary">-</button><span className="btn btn-outline-primary">{quantity}</span><button onClick={() => dispatch(increment())} className="btn btn-secondary">+</button></span></p> }
             </div>
             { (available && selectedSize) && <button onClick={onCartBtnClick} className="btn btn-danger btn-block btn-lg">В корзину</button> }

@@ -10,7 +10,7 @@ const initialState: IOrderState = {
     num_3: '',
     num_4: '',
   },
-  addres: '',
+  address: '',
 };
 
 type TChangePayload = {
@@ -22,13 +22,13 @@ const orderSlice = createSlice({
   name: 'orderSlice',
   initialState,
   reducers: {
-    changeFiels(state: IOrderState, action: PayloadAction<TChangePayload>) {
+    changeFields(state: IOrderState, action: PayloadAction<TChangePayload>) {
       const { name, value } = action.payload;
       if (name.startsWith('num')) {
         state.telephone[name] = value;
       }
       if (name === 'address') {
-        state.addres = value;
+        state.address = value;
       }
     },
     resetOrderForm(state: IOrderState) {
@@ -36,12 +36,12 @@ const orderSlice = createSlice({
       state.telephone.num_2 = '';
       state.telephone.num_3 = '';
       state.telephone.num_4 = '';
-      state.addres = '';
+      state.address = '';
     }
   }
 });
 
 export const orderReducer = orderSlice.reducer;
-export const { changeFiels, resetOrderForm } = orderSlice.actions;
+export const { changeFields, resetOrderForm } = orderSlice.actions;
 export const telephoneSelector = (state: TRootState) => state.order.telephone;
-export const addressSelector = (state: TRootState) => state.order.addres;
+export const addressSelector = (state: TRootState) => state.order.address;
